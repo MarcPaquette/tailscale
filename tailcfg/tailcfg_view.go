@@ -66,20 +66,16 @@ func (v *UserView) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-func (v UserView) ID() UserID                   { return v.ж.ID }
-func (v UserView) LoginName() string            { return v.ж.LoginName }
-func (v UserView) DisplayName() string          { return v.ж.DisplayName }
-func (v UserView) ProfilePicURL() string        { return v.ж.ProfilePicURL }
-func (v UserView) Logins() views.Slice[LoginID] { return views.SliceOf(v.ж.Logins) }
-func (v UserView) Created() time.Time           { return v.ж.Created }
+func (v UserView) ID() UserID            { return v.ж.ID }
+func (v UserView) DisplayName() string   { return v.ж.DisplayName }
+func (v UserView) ProfilePicURL() string { return v.ж.ProfilePicURL }
+func (v UserView) Created() time.Time    { return v.ж.Created }
 
 // A compilation failure here means this code must be regenerated, with the command at the top of this file.
 var _UserViewNeedsRegeneration = User(struct {
 	ID            UserID
-	LoginName     string
 	DisplayName   string
 	ProfilePicURL string
-	Logins        []LoginID
 	Created       time.Time
 }{})
 
@@ -637,7 +633,7 @@ func (v *RegisterResponseView) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-func (v RegisterResponseView) User() UserView          { return v.ж.User.View() }
+func (v RegisterResponseView) User() User              { return v.ж.User }
 func (v RegisterResponseView) Login() Login            { return v.ж.Login }
 func (v RegisterResponseView) NodeKeyExpired() bool    { return v.ж.NodeKeyExpired }
 func (v RegisterResponseView) MachineAuthorized() bool { return v.ж.MachineAuthorized }
